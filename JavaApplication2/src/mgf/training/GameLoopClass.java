@@ -26,8 +26,10 @@ public class GameLoopClass implements GameLoop{
     public void draw(Graphics2D gd) {
         
         gd.setColor(Color.CYAN);
-        gd.drawString("Me cago en todo", 100, 10);
-        
+        gd.drawString("Me cago en todo", 100, 95);
+        gd.fillRect(100,100,100,100);
+        gd.setColor(Color.BLACK);
+        gd.fillOval(105, 105, 20, 40);
     }
 
     @Override
