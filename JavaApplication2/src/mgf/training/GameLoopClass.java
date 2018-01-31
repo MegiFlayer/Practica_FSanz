@@ -16,6 +16,7 @@ import kp.jngg.GameLoop;
 public class GameLoopClass implements GameLoop{
     
         private double pX;
+        private double pY = 0;
 
     @Override
     public void init() {
@@ -25,15 +26,28 @@ public class GameLoopClass implements GameLoop{
     @Override
     public void draw(Graphics2D gd) {
         
-        gd.setColor(Color.CYAN);
-        gd.drawString("Me cago en todo", 100, 95);
+        gd.setColor(Color.orange);
         gd.fillRect(100,100,100,100);
-        gd.setColor(Color.BLACK);
-        gd.fillOval(105, 105, 20, 40);
+        gd.setColor(Color.white);
+        gd.fillOval(110, 105, 30, 40);
+        gd.fillOval(160, 105, 30, 40);
+        gd.setColor(Color.red);
+        gd.drawLine(120,175,180,175);
+        gd.setColor(Color.green);
+        gd.fillOval(120,(int) (120 - pY),10,10);
+        gd.fillOval(170,(int) (120 - pY),10,10);
     }
 
     @Override
     public void update(double d) {
+        
+        if (pY < 14.5 ){
+        
+        pY += 5*d;
+            
+        }
+        
+        
         
     }
         
