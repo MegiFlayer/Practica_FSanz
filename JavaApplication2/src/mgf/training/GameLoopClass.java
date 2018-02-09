@@ -34,8 +34,8 @@ public class GameLoopClass implements GameLoop{
         gd.setColor(Color.red);
         gd.drawLine(120,175,180,175);
         gd.setColor(Color.green);
-        gd.fillOval((int) (120 + pX),120,10,10);
-        gd.fillOval((int) (170 + pX),120,10,10);
+        gd.fillOval((int) (120 + pX - pXhlp),120,10,10);
+        gd.fillOval((int) (170 + pX - pXhlp),120,10,10);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class GameLoopClass implements GameLoop{
         
         pXhlp = 0;
         
-        if (pXhlp < 10){
+        if (pXhlp < 20){
             
             pXhlp =+ 5*d;
             
