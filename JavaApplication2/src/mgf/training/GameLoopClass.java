@@ -16,7 +16,7 @@ import kp.jngg.GameLoop;
 public class GameLoopClass implements GameLoop{
     
         private double pX;
-        private double pY = 0;
+        private double pXhlp;
 
     @Override
     public void init() {
@@ -34,18 +34,41 @@ public class GameLoopClass implements GameLoop{
         gd.setColor(Color.red);
         gd.drawLine(120,175,180,175);
         gd.setColor(Color.green);
-        gd.fillOval(120,(int) (120 - pY),10,10);
-        gd.fillOval(170,(int) (120 - pY),10,10);
+        gd.fillOval((int) (120 + pX),120,10,10);
+        gd.fillOval((int) (170 + pX),120,10,10);
     }
 
     @Override
     public void update(double d) {
         
-        if (pY < 14.5 ){
+        if (pX < 10 ){
         
-        pY += 5*d;
+        pX += 5*d;
+            
+        }else{
+        
+        pXhlp = 0;
+        
+        if (pXhlp < 10){
+            
+            pXhlp =+ 5*d;
+            
+        }else{
+            
+            pX = 0;
             
         }
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
