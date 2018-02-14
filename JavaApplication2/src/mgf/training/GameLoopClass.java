@@ -9,15 +9,20 @@ package mgf.training;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import kp.jngg.GameLoop;
+import kp.jngg.input.InputEvent;
+import kp.jngg.input.InputId;
+import kp.jngg.input.InputListener;
+import kp.jngg.input.Keycode;
 /**
  *
  * @author ferna
  */
-public class GameLoopClass implements GameLoop{
+public class GameLoopClass implements GameLoop, InputListener{
     
         public double pX;
-        public double pXhlp;
-        public int ciclos = 0;
+        public double pY;
+        public double speed = 4;
+        public double incr;
         
     @Override
     public void init() {
@@ -35,48 +40,45 @@ public class GameLoopClass implements GameLoop{
         gd.setColor(Color.red);
         gd.drawLine(120,175,180,175);
         gd.setColor(Color.green);
-        gd.fillOval((int) (120 + pX - pXhlp),120,10,10);
-        gd.fillOval((int) (170 + pX - pXhlp),120,10,10);
+        gd.fillOval((int) (120 + pX),(int) (120 + pY),10,10);
+        gd.fillOval((int) (170 + pX),(int) (120 + pY),10,10);
 
     }
 
     @Override
     public void update(double d) {
         
-        if (pX < 10 ){
+        incr += d*speed;
         
-        pX += 5*d;
+        /*if (Math.abs(pX) > 10){
             
-        }else{
+            speed *= -1;
+                   
+        }*/
         
-        if (pXhlp < 20){
-            
-            pXhlp =+ 5*d;
-            ciclos =+ 1;
+        pX = Math.cos(incr)*10;
+        pY = Math.sin(incr)*15;
+        
+    }
 
-            System.out.print(ciclos);
+    @Override
+    public void dispatchEvent(InputEvent ie) {
+        
+        if (ie.isPressed()){System.out.println(ie);}
+        
+        if(ie.getIdType() == InputId.KEYBOARD_TYPE){
+        
+            int code = ie.getCode();
             
-        }else{
+            if (Keycode.VK_N == code && ie.isPressed()){
             
-            pX = 0;
+                System.out.println("N");
+            
+            }
             
         }
         
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
-        
-        
-    }
+           
+}
     

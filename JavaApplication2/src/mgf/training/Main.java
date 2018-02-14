@@ -8,6 +8,9 @@ package mgf.training;
 import kp.jngg.Display;
 import kp.jngg.DisplayMode;
 import kp.jngg.GameLoop;
+import kp.jngg.input.InputEvent;
+import kp.jngg.input.InputListener;
+import kp.jngg.input.Keyboard;
 
 /**
  *
@@ -19,7 +22,12 @@ public class Main {
     
         Display ventana = Display.create("Práctica", DisplayMode.getDisplayMode(1280, 720));
     
-        ventana.setGameLoop(new GameLoopClass());
+        GameLoopClass gl = new GameLoopClass();
+        
+        ventana.addInput(new Keyboard());
+        ventana.addInputListener(gl);
+        
+        ventana.setGameLoop(gl);
         ventana.start();
         
     }
