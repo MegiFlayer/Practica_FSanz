@@ -15,9 +15,10 @@ import kp.jngg.GameLoop;
  */
 public class GameLoopClass implements GameLoop{
     
-        private double pX;
-        private double pXhlp;
-
+        public double pX;
+        public double pXhlp;
+        public int ciclos = 0;
+        
     @Override
     public void init() {
         
@@ -36,6 +37,7 @@ public class GameLoopClass implements GameLoop{
         gd.setColor(Color.green);
         gd.fillOval((int) (120 + pX - pXhlp),120,10,10);
         gd.fillOval((int) (170 + pX - pXhlp),120,10,10);
+
     }
 
     @Override
@@ -47,11 +49,12 @@ public class GameLoopClass implements GameLoop{
             
         }else{
         
-        pXhlp = 0;
-        
         if (pXhlp < 20){
             
             pXhlp =+ 5*d;
+            ciclos =+ 1;
+
+            System.out.print(ciclos);
             
         }else{
             
