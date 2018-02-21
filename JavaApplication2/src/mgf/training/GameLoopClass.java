@@ -32,6 +32,8 @@ public class GameLoopClass implements GameLoop, InputListener{
     @Override
     public void draw(Graphics2D gd) {
         
+        gd.setColor(Color.BLUE);
+        gd.fillPolygon(new int []{100,200,150,50,0},new int []{100,200,300,300,200},5);
         gd.setColor(Color.orange);
         gd.fillRect(100,100,100,100);
         gd.setColor(Color.white);
@@ -42,7 +44,7 @@ public class GameLoopClass implements GameLoop, InputListener{
         gd.setColor(Color.green);
         gd.fillOval((int) (120 + pX),(int) (120 + pY),10,10);
         gd.fillOval((int) (170 + pX),(int) (120 + pY),10,10);
-
+        
     }
 
     @Override
