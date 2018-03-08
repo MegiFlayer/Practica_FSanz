@@ -23,6 +23,13 @@ public class GameLoopClass implements GameLoop, InputListener{
         public double pY;
         public double speed = 4;
         public double incr;
+        public int penX = 0;
+        public int penY = 0;
+        public boolean moveXp = false;
+        public boolean moveXn = false;
+        public boolean moveYp = false;
+        public boolean moveYn = false;
+        
         
     @Override
     public void init() {
@@ -33,7 +40,7 @@ public class GameLoopClass implements GameLoop, InputListener{
     public void draw(Graphics2D gd) {
         
         gd.setColor(Color.BLUE);
-        gd.fillPolygon(new int []{100,200,150,50,0},new int []{100,200,300,300,200},5);
+        gd.fillPolygon(new int []{(100 + penX),(200 + penX),(150 + penX),(50 + penX),(0 + penX)},new int []{(100 + penY),(200 + penY),(300 + penY),(300 + penY),(200 + penY)},5);
         gd.setColor(Color.orange);
         gd.fillRect(100,100,100,100);
         gd.setColor(Color.white);
@@ -61,12 +68,33 @@ public class GameLoopClass implements GameLoop, InputListener{
         pX = Math.cos(incr)*10;
         pY = Math.sin(incr)*15;
         
+        if (moveXp == true){
+        
+            penX += 500 * d;
+            
+        }
+        if (moveXn == true){
+        
+            penX -= 500 * d;
+            
+        }
+        if (moveYp == true){
+        
+            penY += 500 * d;
+            
+        }
+        if (moveYn == true){
+        
+            penY -= 500 * d;
+            
+        }
+        
     }
 
     @Override
     public void dispatchEvent(InputEvent ie) {
         
-        if (ie.isPressed()){System.out.println(ie);}
+        //if (ie.isPressed()){System.out.println(ie);}
         
         if(ie.getIdType() == InputId.KEYBOARD_TYPE){
         
@@ -75,6 +103,43 @@ public class GameLoopClass implements GameLoop, InputListener{
             if (Keycode.VK_N == code && ie.isPressed()){
             
                 System.out.println("N");
+            
+            }
+            
+            if (Keycode.VK_RIGHT == code && ie.isPressed()){
+            
+                moveXp = true;
+            
+            }else if(Keycode.VK_RIGHT == code && ie.isReleased()){
+            
+                moveXp = false;
+            
+            }
+            if (Keycode.VK_LEFT == code && ie.isPressed()){
+            
+                moveXn = true;
+            
+            }else if(Keycode.VK_LEFT == code && ie.isReleased()){
+            
+                moveXn = false;
+            
+            }
+            if (Keycode.VK_UP == code && ie.isPressed()){
+            
+                moveYn = true;
+            
+            }else if(Keycode.VK_UP == code && ie.isReleased()){
+            
+                moveYn = false;
+            
+            }
+            if (Keycode.VK_DOWN == code && ie.isPressed()){
+            
+                moveYp = true;
+            
+            }else if(Keycode.VK_DOWN == code && ie.isReleased()){
+            
+                moveYp = false;
             
             }
             
