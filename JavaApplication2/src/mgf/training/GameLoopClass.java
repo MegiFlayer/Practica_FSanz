@@ -100,12 +100,6 @@ public class GameLoopClass implements GameLoop, InputListener{
         
             int code = ie.getCode();
             
-            if (Keycode.VK_N == code && ie.isPressed()){
-            
-                System.out.println("N");
-            
-            }
-            
             if (Keycode.VK_RIGHT == code && ie.isPressed()){
             
                 moveXp = true;

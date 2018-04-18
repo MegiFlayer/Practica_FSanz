@@ -11,4 +11,14 @@ package mgf.training;
  */
 public class Procesos {
     
+        int lele = 2;
+    
+        public static void mover(String text){
+    
+        System.out.print(text);
+        
+        }
+    
+    
+
 }

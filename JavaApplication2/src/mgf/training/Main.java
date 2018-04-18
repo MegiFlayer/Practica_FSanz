@@ -11,6 +11,7 @@ import kp.jngg.GameLoop;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputListener;
 import kp.jngg.input.Keyboard;
+import java.util.Scanner;
 
 /**
  *
@@ -29,6 +30,10 @@ public class Main {
         
         ventana.setGameLoop(gl);
         ventana.start();
+        
+        Scanner in = new Scanner(System.in);
+        
+        Procesos.mover();
         
     }
     
