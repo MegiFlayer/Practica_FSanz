@@ -24,7 +24,7 @@ public class GameLoopClass implements GameLoop, InputListener{
         public double speed = 4;
         public double incr;
         public int penX = 0;
-        public int penY = 0;
+        public int penY = 100;
         public boolean moveXp = false;
         public boolean moveXn = false;
         public boolean moveYp = false;
@@ -40,7 +40,7 @@ public class GameLoopClass implements GameLoop, InputListener{
     public void draw(Graphics2D gd) {
         
         gd.setColor(Color.BLUE);
-        gd.fillPolygon(new int []{(100 + penX),(200 + penX),(150 + penX),(50 + penX),(0 + penX)},new int []{(100 + penY),(200 + penY),(300 + penY),(300 + penY),(200 + penY)},5);
+        gd.fillPolygon(new int []{(100 + penX),(200 + penX),(150 + penX),(50 + penX),(0 + penX)},new int []{(0 + penY),(100 + penY),(200 + penY),(200 + penY),(100 + penY)},5);
         gd.setColor(Color.orange);
         gd.fillRect(100,100,100,100);
         gd.setColor(Color.white);
@@ -79,7 +79,9 @@ public class GameLoopClass implements GameLoop, InputListener{
         
             penX -= 500 * d;
             
-        }else if(penX < 0){
+        }
+        
+        if(penX < 0){
         
             penX = 0;
         
@@ -89,13 +91,13 @@ public class GameLoopClass implements GameLoop, InputListener{
             penY += 500 * d;
             
         }
-        if (moveYn == true && penY > -100){
+        if (moveYn == true && penY > 0){
         
             penY -= 500 * d;
             
-        }else if(penY < -100){
+        }else if(penY < 0){
         
-            penY = -100;
+            penY = 0;
         
         }
         
