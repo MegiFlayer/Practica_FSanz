@@ -11,7 +11,7 @@ package mgf.training;
  */
 public class Procesos {
     
-        int lele = 2;
+        int prueba = 2;
     
         public static void mover(String text){
     

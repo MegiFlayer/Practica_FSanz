@@ -32,8 +32,9 @@ public class Main {
         ventana.start();
         
         Scanner in = new Scanner(System.in);
+        String texto = in.nextLine();
         
-        Procesos.mover();
+        Procesos.mover(texto);
         
     }
     

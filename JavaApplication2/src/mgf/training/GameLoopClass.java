@@ -68,25 +68,35 @@ public class GameLoopClass implements GameLoop, InputListener{
         pX = Math.cos(incr)*10;
         pY = Math.sin(incr)*15;
         
-        if (moveXp == true){
+        
+        
+        if (moveXp == true && penX < 1280){
         
             penX += 500 * d;
             
         }
-        if (moveXn == true){
+        if (moveXn == true && penX > 0){
         
             penX -= 500 * d;
             
+        }else if(penX < 0){
+        
+            penX = 0;
+        
         }
         if (moveYp == true){
         
             penY += 500 * d;
             
         }
-        if (moveYn == true){
+        if (moveYn == true && penY > -100){
         
             penY -= 500 * d;
             
+        }else if(penY < -100){
+        
+            penY = -100;
+        
         }
         
     }
