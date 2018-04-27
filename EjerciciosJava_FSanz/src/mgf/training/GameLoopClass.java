@@ -8,16 +8,26 @@ package mgf.training;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.io.File;
+import java.io.IOException;
 import kp.jngg.GameLoop;
+import kp.jngg.geom.Vector2;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputId;
 import kp.jngg.input.InputListener;
 import kp.jngg.input.Keycode;
+import kp.jngg.sprite.Sprite;
+import kp.jngg.sprite.SpriteLoader;
 /**
  *
  * @author ferna
  */
 public class GameLoopClass implements GameLoop, InputListener{
+    
+    private SpriteLoader sprites;
+    private Sprite sprite1;
+    
+    private Entidad ent;
     
         public double pX;
         public double pY;
@@ -33,7 +43,20 @@ public class GameLoopClass implements GameLoop, InputListener{
         
     @Override
     public void init() {
+        sprites = new SpriteLoader(new File("sprites"));
+        try {
+            sprites.loadStaticSprite("sprite_mario", "Mario.png");
+            
+            sprite1 = sprites.getSprite("sprite_mario");
+        }
+        catch(IOException ex) {
+            ex.printStackTrace(System.err);
+        }
         
+        ent = new Entidad();
+        ent.setPosition(0, 0);
+        ent.setSize(100, 100);
+        ent.setSprite(sprite1);
     }
 
     @Override
@@ -52,10 +75,14 @@ public class GameLoopClass implements GameLoop, InputListener{
         gd.fillOval((int) (120 + pX),(int) (120 + pY),10,10);
         gd.fillOval((int) (170 + pX),(int) (120 + pY),10,10);
         
+        ent.draw(gd);
+        
     }
 
     @Override
     public void update(double d) {
+        
+        ent.update(d);
         
         incr += d*speed;
         
@@ -106,11 +133,25 @@ public class GameLoopClass implements GameLoop, InputListener{
     @Override
     public void dispatchEvent(InputEvent ie) {
         
+        ent.dispatch(ie);
         //if (ie.isPressed()){System.out.println(ie);}
         
         if(ie.getIdType() == InputId.KEYBOARD_TYPE){
         
             int code = ie.getCode();
+            
+            if(code == Keycode.VK_P) {
+                Vector2 s = ent.getSpeed();
+                s.multiply(1.5);
+                ent.setSpeed(s.x, s.y);
+            }
+            
+            if(code == Keycode.VK_O) {
+                Vector2 s = ent.getSpeed();
+                s.multiply(0.75);
+                ent.setSpeed(s.x, s.y);
+            }
+            
             
             if (Keycode.VK_RIGHT == code && ie.isPressed()){
             

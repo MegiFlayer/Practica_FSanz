@@ -12,6 +12,8 @@ import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputListener;
 import kp.jngg.input.Keyboard;
 import java.util.Scanner;
+import kp.jngg.geom.Vector2;
+import kp.jngg.sprite.SpriteLoader;
 
 /**
  *
@@ -31,11 +33,10 @@ public class Main {
         ventana.setGameLoop(gl);
         ventana.start();
         
-        Scanner in = new Scanner(System.in);
+        /*Scanner in = new Scanner(System.in);
         String texto = in.nextLine();
         
-        Procesos.mover(texto);
-        
+        Procesos.mover(texto);*/
     }
     
     
