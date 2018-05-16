@@ -63,7 +63,7 @@ public class GameLoopClass implements GameLoop, InputListener{
     public void draw(Graphics2D gd) {
         
         gd.setColor(Color.BLUE);
-        gd.fillPolygon(new int []{(100 + penX),(200 + penX),(150 + penX),(50 + penX),(0 + penX)},new int []{(0 + penY),(100 + penY),(200 + penY),(200 + penY),(100 + penY)},5);
+        //gd.fillPolygon(new int []{(100 + penX),(200 + penX),(150 + penX),(50 + penX),(0 + penX)},new int []{(0 + penY),(100 + penY),(200 + penY),(200 + penY),(100 + penY)},5);
         gd.setColor(Color.orange);
         gd.fillRect(100,100,100,100);
         gd.setColor(Color.white);
