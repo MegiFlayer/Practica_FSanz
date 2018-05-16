@@ -37,7 +37,7 @@ public class Entidad
     {
         position = new Vector2();
         size = new Vector2(50, 50);
-        speed = new Vector2(1, 1);
+        speed = new Vector2(10, 10);
         sprite = null;
     }
     
@@ -78,6 +78,15 @@ public class Entidad
     public void update(double delta)
     {
         position.add(speed.x * moveX, speed.y * moveY);
+        if (position.y < 620){
+            
+            position.add(0, 7.5);
+        
+        }else if(position.y >= 620){
+        
+            position.y = 620;
+        
+        }
     }
     
     public void dispatch(InputEvent event)
@@ -86,16 +95,16 @@ public class Entidad
         {
             int code = event.getCode();
             if(code == Keycode.VK_UP) {
-                moveY = event.isPressed() ? -1 : 0;
+                moveY += event.isPressed() ? -1 : 1;
             }
-            if(code == Keycode.VK_DOWN) {
-                moveY = event.isPressed() ? 1 : 0;
+            if(code == Keycode.VK_DOWN && position.y <= 620) {
+                moveY += event.isPressed() ? 1 : -1;
             }
             if(code == Keycode.VK_LEFT) {
-                moveX = event.isPressed() ? -1 : 0;
+                moveX += event.isPressed() ? -1 : 1;
             }
             if(code == Keycode.VK_RIGHT) {
-                moveX = event.isPressed() ? 1 : 0;
+                moveX += event.isPressed() ? 1 : -1;
             }
         }
     }

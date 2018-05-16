@@ -33,10 +33,6 @@ public class Main {
         ventana.setGameLoop(gl);
         ventana.start();
         
-        /*Scanner in = new Scanner(System.in);
-        String texto = in.nextLine();
-        
-        Procesos.mover(texto);*/
     }
     
     
