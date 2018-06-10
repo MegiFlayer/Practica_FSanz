@@ -29,6 +29,7 @@ public class Entidad
     private Vector2 size;
     private Vector2 speed;
     private Sprite sprite;
+    private boolean jumpAble;
     
     private int moveX;
     private int moveY;
@@ -37,7 +38,7 @@ public class Entidad
     {
         position = new Vector2();
         size = new Vector2(50, 50);
-        speed = new Vector2(10, 10);
+        speed = new Vector2(10, 20);
         sprite = null;
     }
     
@@ -77,7 +78,7 @@ public class Entidad
     
     public void update(double delta)
     {
-        position.add(speed.x * moveX, speed.y * moveY);
+        if (jumpAble == true){position.add(speed.x * moveX, speed.y * moveY);}else if (jumpAble == false){position.add(speed.x * moveX, 0);}
         if (position.y < 620){
             
             position.add(0, 7.5);
@@ -85,8 +86,14 @@ public class Entidad
         }else if(position.y >= 620){
         
             position.y = 620;
+            jumpAble = true;
         
         }
+        if(position.y <= 420){
+            jumpAble = false;
+            position.y = 420;
+            }
+        
     }
     
     public void dispatch(InputEvent event)
@@ -94,7 +101,7 @@ public class Entidad
         if(event.getIdType() == InputId.KEYBOARD_TYPE)
         {
             int code = event.getCode();
-            if(code == Keycode.VK_UP) {
+            if(code == Keycode.VK_UP && jumpAble == true) {
                 moveY += event.isPressed() ? -1 : 1;
             }
             if(code == Keycode.VK_DOWN && position.y <= 620) {
