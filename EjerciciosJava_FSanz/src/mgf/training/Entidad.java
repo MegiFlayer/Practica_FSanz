@@ -7,6 +7,7 @@ package mgf.training;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import kp.jngg.font.Font;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputId;
 import kp.jngg.input.Keycode;
@@ -27,6 +28,8 @@ public class Entidad {
     private static final double GRAVITY = 0.1;
     private static final double FLOOR = 720;
     private static final double FRICTION = 0.25;
+    
+    private static final Font DEBUG_FONT = Font.getNativeFont("arial", 12, Color.GREEN);
 
     private final Vector2 position;
     private final Vector2 size;
@@ -80,11 +83,8 @@ public class Entidad {
     }
 
     private void drawSpecs(Graphics2D g) {
-        Color old = g.getColor();
-        g.setColor(Color.GREEN);
-        g.drawString("Position = " + position, 12, 12);
-        g.drawString("Speed = " + speed, 12, 24);
-        g.setColor(old);
+        DEBUG_FONT.print(g, "Position = " + position.scale(2), 12, 12);
+        DEBUG_FONT.print(g, "Speed = " + speed.scale(2), 12, 24);
     }
 
     public void update(double delta) {
