@@ -11,11 +11,11 @@ import java.awt.Graphics2D;
 import java.io.File;
 import java.io.IOException;
 import kp.jngg.GameLoop;
-import kp.jngg.geom.Vector2;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputId;
 import kp.jngg.input.InputListener;
 import kp.jngg.input.Keycode;
+import kp.jngg.math.Vector2;
 import kp.jngg.sprite.Sprite;
 import kp.jngg.sprite.SpriteLoader;
 /**

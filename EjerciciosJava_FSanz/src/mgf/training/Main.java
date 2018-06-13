@@ -7,13 +7,7 @@ package mgf.training;
 
 import kp.jngg.Display;
 import kp.jngg.DisplayMode;
-import kp.jngg.GameLoop;
-import kp.jngg.input.InputEvent;
-import kp.jngg.input.InputListener;
 import kp.jngg.input.Keyboard;
-import java.util.Scanner;
-import kp.jngg.geom.Vector2;
-import kp.jngg.sprite.SpriteLoader;
 
 /**
  *

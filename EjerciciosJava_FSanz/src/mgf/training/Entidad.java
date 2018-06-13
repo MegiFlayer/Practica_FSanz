@@ -6,12 +6,11 @@
 package mgf.training;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
-import kp.jngg.geom.Vector2;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputId;
 import kp.jngg.input.Keycode;
+import kp.jngg.math.Vector2;
 import kp.jngg.sprite.Sprite;
 
 /**
