@@ -24,10 +24,10 @@ public class Entidad {
      * Funciones recomendadas: draw: Para dibujar update: Actualizar valores
      * dispatchEvents: capturar eventos de inputs
      */
-    private static final double X_SPEED = 10;
-    private static final double GRAVITY = 0.1;
+    private static final double X_SPEED = 7.5;
+    private static final double GRAVITY = 0.15;
     private static final double FLOOR = 720;
-    private static final double FRICTION = 0.25;
+    private static final double FRICTION = 0.40;
 
     private final Vector2 position;
     private final Vector2 size;
@@ -93,19 +93,19 @@ public class Entidad {
         speed.y += GRAVITY;
 
         if (jumpAble && moveY < 0) {
-            speed.y = -5;
+            speed.y = -7.5;
             jumpAble = false;
         }
-        if (jumpAble && moveX != 0) {
+        if (/*jumpAble && */moveX != 0) {
             speed.x = X_SPEED * moveX;
         } else {
             if (speed.x > 0) {
-                speed.x -= FRICTION * (jumpAble ? 1 : 0.25);
+                speed.x -= FRICTION * (jumpAble ? 1 : 0.5);
                 if (speed.x < 0) {
                     speed.x = 0;
                 }
             } else if (speed.x < 0) {
-                speed.x += FRICTION * (jumpAble ? 1 : 0.25);
+                speed.x += FRICTION * (jumpAble ? 1 : 0.5);
                 if (speed.x > 0) {
                     speed.x = 0;
                 }
