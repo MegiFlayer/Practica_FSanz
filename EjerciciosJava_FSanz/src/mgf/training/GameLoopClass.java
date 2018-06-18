@@ -11,11 +11,12 @@ import java.awt.Graphics2D;
 import java.io.File;
 import java.io.IOException;
 import kp.jngg.GameLoop;
-import kp.jngg.geom.Vector2;
+import kp.jngg.math.Vector2;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputId;
 import kp.jngg.input.InputListener;
 import kp.jngg.input.Keycode;
+import kp.jngg.sprite.AnimatedSprite;
 import kp.jngg.sprite.Sprite;
 import kp.jngg.sprite.SpriteLoader;
 /**
@@ -26,6 +27,10 @@ public class GameLoopClass implements GameLoop, InputListener{
     
     private SpriteLoader sprites;
     private Sprite sprite1;
+    private AnimatedSprite sprite2;
+    private AnimatedSprite sprite3;
+    private AnimatedSprite sprite4;
+    
     
     private Entidad ent;
     
@@ -48,21 +53,28 @@ public class GameLoopClass implements GameLoop, InputListener{
             sprites.loadStaticSprite("sprite_mario", "Mario.png");
             
             sprite1 = sprites.getSprite("sprite_mario");
+            sprite2 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm", "normal.png", 60, 0, 20, 20, 4).buildSprite();
+            sprite3 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm1", "normal.png", 120, 0, 20, 20, 1).buildSprite();
+            sprite4 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm2", "normal.png", 80, 0, 20, 20, 1).buildSprite();
+            sprite2.setLoopMode();
+            sprite2.setSpeed(2);
+            
+            sprite2.start();
         }
         catch(IOException ex) {
             ex.printStackTrace(System.err);
         }
         
         ent = new Entidad();
-        ent.setPosition(0, 0);
+        ent.setPosition(0, 620);
         ent.setSize(100, 100);
-        ent.setSprite(sprite1);
+        ent.setSprite(sprite2, sprite3, sprite4);
     }
 
     @Override
     public void draw(Graphics2D gd) {
         
-        gd.setColor(Color.BLUE);
+        //gd.setColor(Color.BLUE);
         //gd.fillPolygon(new int []{(100 + penX),(200 + penX),(150 + penX),(50 + penX),(0 + penX)},new int []{(0 + penY),(100 + penY),(200 + penY),(200 + penY),(100 + penY)},5);
         gd.setColor(Color.orange);
         gd.fillRect(100,100,100,100);

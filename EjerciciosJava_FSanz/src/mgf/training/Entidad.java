@@ -8,10 +8,10 @@ package mgf.training;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import kp.jngg.geom.Vector2;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputId;
 import kp.jngg.input.Keycode;
+import kp.jngg.math.Vector2;
 import kp.jngg.sprite.Sprite;
 
 /**
@@ -32,8 +32,10 @@ public class Entidad {
     private final Vector2 position;
     private final Vector2 size;
     private final Vector2 speed;
-    private Sprite sprite;
     private boolean jumpAble;
+    private Sprite sprite1;
+    private Sprite sprite2;
+    private Sprite sprite3;
 
     private int moveX;
     private int moveY;
@@ -42,7 +44,9 @@ public class Entidad {
         position = new Vector2();
         size = new Vector2(50, 50);
         speed = new Vector2();
-        sprite = null;
+        sprite1 = null;
+        sprite2 = null;
+        sprite3 = null;
     }
 
     public void setPosition(double x, double y) {
@@ -69,13 +73,23 @@ public class Entidad {
         size.set(width, height);
     }
 
-    public void setSprite(Sprite s) {
-        sprite = s;
+    public void setSprite(Sprite s1, Sprite s2, Sprite s3) {
+        sprite1 = s1;
+        sprite2 = s2;
+        sprite3 = s3;
+        
+        
     }
 
     public void draw(Graphics2D g) {
-        if (sprite != null) {
-            sprite.draw(g, position.x, position.y, size.x, size.y);
+        if (sprite1 != null && moveX == 0) {
+            sprite1.draw(g, position.x, position.y, size.x, size.y);
+        }
+        if (sprite2 != null && moveX < 0) {
+            sprite2.draw(g, position.x, position.y, size.x, size.y);
+        }
+        if (sprite3 != null && moveX > 0) {
+            sprite3.draw(g, position.x, position.y, size.x, size.y);
         }
         drawSpecs(g);
     }
@@ -90,6 +104,7 @@ public class Entidad {
 
     public void update(double delta) {
 
+        sprite1.update(delta);
         speed.y += GRAVITY;
 
         if (jumpAble && moveY < 0) {
