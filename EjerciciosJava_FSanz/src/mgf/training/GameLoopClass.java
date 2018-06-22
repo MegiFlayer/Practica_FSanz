@@ -53,7 +53,7 @@ public class GameLoopClass implements GameLoop, InputListener{
             sprites.loadStaticSprite("sprite_mario", "Mario.png");
             
             sprite1 = sprites.getSprite("sprite_mario");
-            sprite2 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm", "normal.png", 60, 0, 20, 20, 4).buildSprite();
+            sprite2 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm", "normal.png", 60, 0, 20, 20, 1).buildSprite();
             sprite3 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm1", "normal.png", 120, 0, 20, 20, 1).buildSprite();
             sprite4 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm2", "normal.png", 80, 0, 20, 20, 1).buildSprite();
             sprite2.setLoopMode();
