@@ -114,7 +114,7 @@ public class Entidad {
         
         
         if (jumpAble && moveY < 0) {
-            speed.y = -5;
+            speed.y = -4;
             jumpAble = false;
         }
         if (/*jumpAble && */moveX != 0) {
