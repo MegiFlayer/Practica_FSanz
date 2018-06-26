@@ -30,9 +30,11 @@ public class GameLoopClass implements GameLoop, InputListener{
     private AnimatedSprite sprite2;
     private AnimatedSprite sprite3;
     private AnimatedSprite sprite4;
+    private AnimatedSprite sprite5;
     
     
     private Entidad ent;
+    private Proyectil pro;
     
         public double pX;
         public double pY;
@@ -44,7 +46,7 @@ public class GameLoopClass implements GameLoop, InputListener{
         public boolean moveXn = false;
         public boolean moveYp = false;
         public boolean moveYn = false;
-        
+    
         
     @Override
     public void init() {
@@ -56,10 +58,14 @@ public class GameLoopClass implements GameLoop, InputListener{
             sprite2 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm", "normal.png", 60, 0, 20, 20, 1).buildSprite();
             sprite3 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm1", "normal.png", 120, 0, 20, 20, 1).buildSprite();
             sprite4 = (AnimatedSprite) sprites.loadAnimatedSprite("pj_pkm2", "normal.png", 80, 0, 20, 20, 1).buildSprite();
+            sprite5 = (AnimatedSprite) sprites.loadAnimatedSprite("proyectilAnim", "Proyectil64x29_FSanz.png", 0, 0, 64, 29, 3).buildSprite();
             sprite2.setLoopMode();
             sprite2.setSpeed(2);
+            sprite5.setLoopMode();
+            sprite5.setSpeed(2);
             
             sprite2.start();
+            sprite5.start();
         }
         catch(IOException ex) {
             ex.printStackTrace(System.err);
@@ -69,6 +75,11 @@ public class GameLoopClass implements GameLoop, InputListener{
         ent.setPosition(0, 620);
         ent.setSize(100, 100);
         ent.setSprite(sprite2, sprite3, sprite4);
+        
+        pro = new Proyectil();
+        pro.setPosition(0, 620);
+        pro.setSize(40, 20);
+        pro.setSprite(sprite5);
     }
 
     @Override
@@ -88,6 +99,7 @@ public class GameLoopClass implements GameLoop, InputListener{
         gd.fillOval((int) (170 + pX),(int) (120 + pY),10,10);
         
         ent.draw(gd);
+        pro.draw(gd);
         
     }
 

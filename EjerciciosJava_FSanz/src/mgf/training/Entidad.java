@@ -6,7 +6,6 @@
 package mgf.training;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import kp.jngg.input.InputEvent;
 import kp.jngg.input.InputId;
@@ -42,7 +41,7 @@ public class Entidad {
 
     public Entidad() {
         position = new Vector2();
-        size = new Vector2(50, 50);
+        size = new Vector2();
         speed = new Vector2();
         sprite1 = null;
         sprite2 = null;
@@ -50,8 +49,13 @@ public class Entidad {
     }
 
     public void setPosition(double x, double y) {
-        position.x = x;
-        position.y = y;
+        if(x < 0){
+            x = 0;
+        }
+        if(y < 0){
+            y = 0;
+        }
+        position.set(x, y);
     }
 
     public void setSpeed(double x, double y) {
