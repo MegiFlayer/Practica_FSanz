@@ -50,7 +50,7 @@ public class GameLoopClass implements GameLoop, InputListener{
         
     @Override
     public void init() {
-        sprites = new SpriteLoader(new File("sprites"));
+        sprites = new SpriteLoader(new File("sprite-s"));
         try {
             sprites.loadStaticSprite("sprite_mario", "Mario.png");
             
